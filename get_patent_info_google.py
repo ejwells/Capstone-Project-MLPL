@@ -34,7 +34,7 @@ def get_patent_citation(id):
     page = requests.get('https://patents.google.com/patent/US%s/en' % (id))
     tree = html.fromstring(page.content)
     citations=tree.xpath('//tr[@itemprop="backwardReferences"]//span[@itemprop="publicationNumber"]/text()')
-    return citations
+    return id_to_num(citations)
 
 def get_patent_cited_by(id):
     '''
@@ -45,7 +45,7 @@ def get_patent_cited_by(id):
     page = requests.get('https://patents.google.com/patent/US%s/en' % (id))
     tree = html.fromstring(page.content)
     citations=tree.xpath('//tr[@itemprop="forwardReferences"]//span[@itemprop="publicationNumber"]/text()')
-    return citations
+    return id_to_num(citations)
 
 
 def get_classification(id):
