@@ -55,16 +55,22 @@ class Tree(object):
 
     def _add_doc(self, string, root, i):
         if(string[0:2] == 'US' and len(string) <= 11):
-            pat_n = int(string[2:9])
-            if pat_n in self.all_patents:
-                self.docs[i][root] = np.append(self.docs[i][root], pat_n)
+            try:
+                pat_n = int(string[2:9])
+                if pat_n in self.all_patents:
+                    self.docs[i][root] = np.append(self.docs[i][root], pat_n)
+            except ValueError:
+                pass
 
     def _add_patent_from_string(self, string):
         if(string[0:2] == 'US' and len(string) <= 11):
-            pat_n = int(string[2:9])
-            if pat_n in self.all_patents and not (pat_n in self.tree):
-                self.tree = np.append(self.tree, pat_n)
-                self.to_proc.append(pat_n)
+            try:
+                pat_n = int(string[2:9])
+                if pat_n in self.all_patents and not (pat_n in self.tree):
+                    self.tree = np.append(self.tree, pat_n)
+                    self.to_proc.append(pat_n)
+            except ValueError:
+                pass
 
     def copy(self):
         result = Tree(self.root_list)
