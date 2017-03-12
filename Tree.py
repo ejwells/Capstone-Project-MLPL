@@ -97,8 +97,7 @@ class Tree(object):
                     string += '%s,' % (key)
                     for pat_n in self.docs[i][key]:
                         string += '%s,' % (str(int(pat_n)))
-                string = string[:-1]
-                string += '\n'
+                    string = string[:-1] + '\n'
                 out.write(string)
                 out.close()
             else:
