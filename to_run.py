@@ -1,13 +1,23 @@
 from Tree import Tree
-
+# please write your first name ethan, tu, lakshay, jiandi
+my_name = 'titouan'
+names = ['ethan', 'tu', 'lakshay', 'jiandi', 'titouan']
 root_list = []
 size = 275
+
 
 input_file = open('invalidation_data.txt', 'r')
 content = input_file.readlines()
 length = len(content)
-start = 4*length/5
-for i in range(start, length):
+
+window = {}
+for i in range(len(names)):
+    start = i*len(content)/5
+    stop = (i+1)*len(content)/5
+    window[names[i]] = (start, stop)
+
+(start, stop) = window[my_name]
+for i in range(start, stop):
     line = content[i].split(',')
     root_list.append(int(line[0]))
 
