@@ -94,10 +94,11 @@ class Tree(object):
             if i < 3:
                 string = ''
                 for key in self.docs[i]:
-                    string += '%s; ' % (key)
+                    string += '%s,' % (key)
                     for pat_n in self.docs[i][key]:
-                        string += '%s; ' % (str(int(pat_n)))
-                string = string[:-2] + '\n'
+                        string += '%s,' % (str(int(pat_n)))
+                string = string[:-1]
+                string += '\n'
                 out.write(string)
                 out.close()
             else:
