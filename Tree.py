@@ -79,7 +79,7 @@ class Tree(object):
         return result
 
     def build_tree(self, size):
-        total_size = size*len(root_list)
+        total_size = size*len(self.root_list)
         for root in self.root_list:
             self.get_branch(root, True)
         while(len(self.tree) < total_size and len(self.to_proc) > 0):
